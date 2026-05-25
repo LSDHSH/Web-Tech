@@ -2,32 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 
-<<<<<<< HEAD
+// Hauptseite und weitere Anwendungsseiten
 Route::get('/', function () {
     return view('welcome');
-=======
-$router->get('/', function()
-{
-  return View::render('home');
 });
 
-$router->get('/home', function()
-{
-  return View::render('home');
+Route::get('/home', function () {
+    return view('home');
 });
 
-$router->get('/register', function()
-{
-  return View::render('register');
+Route::get('/register', function () {
+    return view('register');
 });
 
-$router->get('/login', function()
-{
-  return View::render('login');
+Route::get('/login', function () {
+    return view('login');
 });
 
-$router->get('/demoquiz', function()
-{
-  return View::render('demoquiz');
->>>>>>> c9fdc16 (Frontend commit)
-});
+Route::get('/demoquiz', function () {
+    return view('demoquiz');
+});   
