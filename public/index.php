@@ -1,31 +1,20 @@
 <?php
 
-// Helper laden
-require_once dirname(__DIR__) . '/core/helpers.php';
+use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 
-// Automatisches Laden von Klassen
-spl_autoload_register(function ($class)
-{
-  $root = dirname(__DIR__);
-  $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
-  
-  if (file_exists($file))
-    require_once $file;
-});
+define('LARAVEL_START', microtime(true));
 
-// Konfiguration laden
-$confs = ['app', 'database', 'mail'];
-foreach ($confs as $conf)
-  \core\Config::load(dirname(__DIR__) . "/config/{$conf}.php");
+// Determine if the application is in maintenance mode...
+if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+    require $maintenance;
+}
 
-// Core-Komponenten instanziieren
-// $session = new core\Session();
-$request = new core\Request();
-$response = new core\Response();
-$router = new core\Router($request, $response);
+// Register the Composer autoloader...
+require __DIR__.'/../vendor/autoload.php';
 
-// Routen einlesen
-require_once dirname(__DIR__) . '/routes/web.php';
+// Bootstrap Laravel and handle the request...
+/** @var Application $app */
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
-// Anwendung ausführen
-$router->resolve();
+$app->handleRequest(Request::capture());
