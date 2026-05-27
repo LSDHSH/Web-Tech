@@ -1,8 +1,8 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 <div class="text-center w-[600px] mb-8">
-    <a href="/home" class="inline-flex items-center text-sm uppercase tracking-wider text-stone-500 hover:text-black font-bold transition-colors">
+    <a href="/index" class="inline-flex items-center text-sm uppercase tracking-wider text-stone-500 hover:text-black font-bold transition-colors">
         ← Zurück zu Guessle
     </a>
 </div>

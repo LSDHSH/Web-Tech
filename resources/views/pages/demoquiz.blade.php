@@ -1,11 +1,11 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 <div class="text-center w-[600px] mb-8 shrink-0">
     <h1 class="text-7xl font-black tracking-tighter uppercase mb-2">
         Guessle
     </h1>
-    <a href="/home" class="inline-flex items-center text-sm uppercase tracking-wider text-stone-500 hover:text-black font-bold transition-colors mb-4">
+    <a href="/index" class="inline-flex items-center text-sm uppercase tracking-wider text-stone-500 hover:text-black font-bold transition-colors mb-4">
         ← Zurück zur Startseite
     </a>
 </div>

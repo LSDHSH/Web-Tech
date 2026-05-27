@@ -4,25 +4,30 @@ use Illuminate\Support\Facades\Route;
 
 // Hauptseite und weitere Anwendungsseiten
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.index');
 });
 
 Route::get('/home', function () {
-    return view('home');
+    return view('pages.home');
 });
 
-Route::get('/welcome', function () {
-    return view('welcome');
+Route::get('/index', function () {
+    return view('pages.index');
 });
 
 Route::get('/register', function () {
-    return view('register');
+    return view('pages.register');
 });
 
 Route::get('/login', function () {
-    return view('login');
+    return view('pages.login');
 });
 
 Route::get('/demoquiz', function () {
-    return view('demoquiz');
+    return view('pages.demoquiz');
 });   
+
+Route::get('/quiz', function () {
+    return view('pages.quiz');
+});
+
