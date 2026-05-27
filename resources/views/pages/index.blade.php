@@ -13,7 +13,7 @@
             <a href="/demoquiz" class="block w-full py-6 px-8 bg-black text-white hover:bg-stone-800 font-bold text-2xl tracking-wide uppercase transition-colors text-center">
                 Start Quiz!
             </a>
-            <p class="text-xs uppercase tracking-wider text-stone-500 mt-4 font-bold">1 Demoquiz ohne Anmeldung</p>
+            <p class="text-xs uppercase tracking-wider text-stone-500 mt-4 font-bold">Try out one free Quiz!</p>
         </div>
 
         <div class="p-10 flex flex-col gap-5 bg-white">
