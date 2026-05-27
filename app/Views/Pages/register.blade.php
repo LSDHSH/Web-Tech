@@ -1,5 +1,8 @@
+@extends('layout')
+
+@section('content')
 <div class="text-center w-[600px] mb-8">
-    <a href="welcome" class="inline-flex items-center text-sm uppercase tracking-wider text-stone-500 hover:text-black font-bold transition-colors">
+    <a href="/home" class="inline-flex items-center text-sm uppercase tracking-wider text-stone-500 hover:text-black font-bold transition-colors">
         ← Zurück zu Guessle
     </a>
 </div>
@@ -7,7 +10,7 @@
 <div class="w-[600px] min-h-[620px] bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden text-left flex flex-col">
     
     <div class="flex flex-row select-none shrink-0 text-lg">
-        <a href="login" class="w-1/2 py-4 text-center font-black uppercase bg-stone-100 text-stone-400 border-b-4 border-r-4 border-black hover:text-black transition-colors">
+        <a href="/login" class="w-1/2 py-4 text-center font-black uppercase bg-stone-100 text-stone-400 border-b-4 border-r-4 border-black hover:text-black transition-colors">
             Login
         </a>
         <div class="w-1/2 py-4 text-center font-black uppercase bg-white border-b-4 border-black">
@@ -15,7 +18,8 @@
         </div>
     </div>
 
-    <form action="register-process.php" method="POST" class="p-10 space-y-6 flex-1 flex flex-col justify-between">
+    <form action="/register" method="POST" class="p-10 space-y-6 flex-1 flex flex-col justify-between">
+        @csrf
         <div class="space-y-5">
             <div>
                 <label for="reg-username" class="block text-sm uppercase font-black tracking-wider mb-2">Benutzername</label>
@@ -48,3 +52,4 @@
         </button>
     </form>
 </div>
+@endsection

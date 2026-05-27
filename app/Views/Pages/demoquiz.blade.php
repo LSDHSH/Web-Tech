@@ -1,8 +1,11 @@
+@extends('layout')
+
+@section('content')
 <div class="text-center w-[600px] mb-8 shrink-0">
     <h1 class="text-7xl font-black tracking-tighter uppercase mb-2">
         Guessle
     </h1>
-    <a href="welcome" class="inline-flex items-center text-sm uppercase tracking-wider text-stone-500 hover:text-black font-bold transition-colors mb-4">
+    <a href="/home" class="inline-flex items-center text-sm uppercase tracking-wider text-stone-500 hover:text-black font-bold transition-colors mb-4">
         ← Zurück zur Startseite
     </a>
 </div>
@@ -50,13 +53,13 @@
                 </tr>
             </thead>
             <tbody id="results-table" class="divide-y-2 divide-stone-200">
-                </tbody>
+            </tbody>
         </table>
         
         <div id="game-status" class="mt-8 text-center hidden">
             <h2 id="status-title" class="text-3xl font-black uppercase tracking-tighter mb-4"></h2>
             <p id="status-text" class="text-sm font-bold text-stone-500 mb-4"></p>
-            <a href="register" class="inline-block py-4 px-8 bg-black text-white font-black text-base uppercase tracking-wider hover:bg-stone-800 transition-colors">
+            <a href="/register" class="inline-block py-4 px-8 bg-black text-white font-black text-base uppercase tracking-wider hover:bg-stone-800 transition-colors">
                 Jetzt registrieren & alle Modi freischalten →
             </a>
         </div>
@@ -64,7 +67,6 @@
 </div>
 
 <script>
-    // Spieldaten für die Demofunktion, hier eigentlich API anbinden
     const secretCountry = { name: "Japan", continent: "Asien", capital: "Tokio", pop: 125, currency: "Yen" };
     
     const countryDatabase = {
@@ -97,13 +99,10 @@
         const guess = countryDatabase[guessName];
         const tableBody = document.getElementById('results-table');
 
-        // Richtig = Schwarz hinterlegt mit weißer Schrift (Voller Kontrast)
-        // Falsch = Hellerer Hintergrund, graue Schrift
         const cContinent = guess.continent === secretCountry.continent ? 'bg-black text-white font-black' : 'bg-stone-200 text-stone-500 line-through';
         const cCapital   = guess.capital === secretCountry.capital ? 'bg-black text-white font-black' : 'bg-stone-200 text-stone-500 line-through';
         const cCurrency  = guess.currency === secretCountry.currency ? 'bg-black text-white font-black' : 'bg-stone-200 text-stone-500 line-through';
         
-        // Höher / Tiefer Pfeil für Bevölkerung
         let popArrow = "";
         let cPop = 'bg-stone-200 text-stone-500';
         if (guess.pop === secretCountry.pop) {
@@ -114,9 +113,8 @@
             popArrow = " ↓";
         }
 
-        // Neue Tabellenzeile generieren
         const row = document.createElement('tr');
-        row.className = "font-bold animate-fadeIn";
+        row.className = "font-bold";
         row.innerHTML = `
             <td class="py-4 text-left font-black">${guess.name}</td>
             <td class="py-4 px-1"><div class="p-2 border border-black ${cContinent}">${guess.continent}</div></td>
@@ -125,11 +123,9 @@
             <td class="py-4 px-1"><div class="p-2 border border-black ${cCurrency}">${guess.currency}</div></td>
         `;
         
-        // Oben an die Tabelle anfügen
         tableBody.insertBefore(row, tableBody.firstChild);
-        inputEl.value = ""; // Input leeren
+        inputEl.value = "";
 
-        // gewonnen oder verloren?
         if (guess.name === secretCountry.name) {
             endGame(true, "Gewonnen!", `Du hast das geheime Land in ${attempts} Versuchen erraten!`);
         } else if (attempts >= maxAttempts) {
@@ -148,3 +144,4 @@
         statusDiv.classList.remove('hidden');
     }
 </script>
+@endsection

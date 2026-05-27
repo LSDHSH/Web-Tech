@@ -1,5 +1,8 @@
+@extends('layout')
+
+@section('content')
 <div class="text-center w-[600px] mb-8">
-    <a href="welcome" class="inline-flex items-center text-sm uppercase tracking-wider text-stone-500 hover:text-black font-bold transition-colors">
+    <a href="/home" class="inline-flex items-center text-sm uppercase tracking-wider text-stone-500 hover:text-black font-bold transition-colors">
         ← Zurück zu Guessle
     </a>
 </div>
@@ -10,12 +13,13 @@
         <div class="w-1/2 py-4 text-center font-black uppercase bg-white border-b-4 border-black">
             Login
         </div>
-        <a href="register" class="w-1/2 py-4 text-center font-black uppercase bg-stone-100 text-stone-400 border-b-4 border-l-4 border-black hover:text-black transition-colors">
+        <a href="/register" class="w-1/2 py-4 text-center font-black uppercase bg-stone-100 text-stone-400 border-b-4 border-l-4 border-black hover:text-black transition-colors">
             Register
         </a>
     </div>
 
-    <form action="login-process.php" method="POST" class="p-10 space-y-6 flex-1 flex flex-col justify-between">
+    <form action="/login" method="POST" class="p-10 space-y-6 flex-1 flex flex-col justify-between">
+        @csrf
         <div class="space-y-6">
             <div>
                 <label for="login-email" class="block text-sm uppercase font-black tracking-wider mb-2">E-Mail Adresse</label>
@@ -40,3 +44,4 @@
         </button>
     </form>
 </div>
+@endsection
