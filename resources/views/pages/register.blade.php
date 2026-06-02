@@ -7,7 +7,7 @@
     <!-- Back Link -->
     <div class="text-center w-full max-w-[600px] mb-8">
         <a href="/index" class="inline-flex items-center text-sm uppercase tracking-wider text-stone-500 hover:text-black font-bold transition-colors">
-            ← Zurück zu Guessle
+            ← Back to Guessle
         </a>
     </div>
 
@@ -19,11 +19,11 @@
 
             <a href="/login"
                class="w-full sm:w-1/2 py-3 sm:py-4 text-center font-black uppercase bg-stone-100 text-stone-400 border-b-4 sm:border-b-4 sm:border-r-4 border-black hover:text-black transition-colors">
-                Login
+                Log in
             </a>
 
             <div class="w-full sm:w-1/2 py-3 sm:py-4 text-center font-black uppercase bg-white border-b-4 border-black">
-                Register
+                Sign up
             </div>
 
         </div>
@@ -36,7 +36,7 @@
 
                 <div>
                     <label for="reg-username" class="block text-sm uppercase font-black tracking-wider mb-2">
-                        Benutzername
+                        Username
                     </label>
 
                     <input type="text"
@@ -49,41 +49,39 @@
 
                 <div>
                     <label for="reg-email" class="block text-sm uppercase font-black tracking-wider mb-2">
-                        E-Mail Adresse
+                        Email Address
                     </label>
 
                     <input type="email"
                            id="reg-email"
                            name="email"
                            required
-                           placeholder="deine@mail.de"
+                           placeholder="your@mail.com"
                            class="w-full p-3 sm:p-4 bg-white border-4 border-black text-black font-mono text-base focus:outline-none focus:bg-stone-50 placeholder-stone-400 font-bold">
                 </div>
 
                 <div>
                     <label for="reg-password" class="block text-sm uppercase font-black tracking-wider mb-2">
-                        Passwort
+                        Password
                     </label>
 
                     <input type="password"
                            id="reg-password"
                            name="password"
                            required
-                           placeholder="Mindestens 8 Zeichen"
+                           placeholder="At least 8 characters"
                            class="w-full p-3 sm:p-4 bg-white border-4 border-black text-black font-mono text-base focus:outline-none focus:bg-stone-50 placeholder-stone-400 font-bold">
                 </div>
 
                 <div class="text-xs text-stone-500 uppercase tracking-wider leading-relaxed pt-2 font-bold">
-                    Mit der Registrierung akzeptierst du, dass wir Cookies für deinen Score lokal speichern.
-                    Nach der Anmeldung senden wir dir eine Bestätigungsmail.
+                    By creating an account, you agree to our use of cookies to save your score locally. We'll send you a confirmation email after registration.
                 </div>
 
             </div>
 
-            <button type="submit"
-                    class="w-full py-4 sm:py-5 bg-black text-white hover:bg-stone-800 font-black text-base tracking-wide uppercase transition-colors text-center cursor-pointer mt-8">
-                Account Erstellen →
-            </button>
+            <x-button type="submit">
+                Create Account →
+            </x-button>
 
         </form>
 

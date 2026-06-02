@@ -18,11 +18,11 @@
 
         <div class="p-10 flex flex-col gap-5 bg-white">
             <a href="/register" class="w-full py-4 px-6 bg-white hover:bg-stone-100 text-black font-black uppercase tracking-wider text-lg border-4 border-black transition-colors text-center">
-                Register
+                Sign up
             </a>
             
             <a href="/login" class="w-full py-3 px-6 bg-transparent hover:underline text-stone-600 hover:text-black font-black uppercase tracking-wider text-lg transition-all text-center">
-                Login
+                Log in
             </a>
         </div>
 
