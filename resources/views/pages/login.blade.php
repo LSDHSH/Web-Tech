@@ -3,7 +3,6 @@
 @section('content')
 
 <div class="min-h-screen flex flex-col items-center justify-center px-4">
-
     <div class="text-center w-full max-w-[600px] mb-8">
         <a href="/index" class="inline-flex items-center text-sm uppercase tracking-wider text-stone-500 hover:text-black font-bold transition-colors">
             ← Back to Guessle
@@ -65,9 +64,9 @@
 
             </div>
 
-            <x-button type="submit">
+            <x-submitbutton type="submit">
                 Log in →
-            </x-button>
+            </x-submitbutton>
 
         </form>
         

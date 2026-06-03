@@ -79,9 +79,9 @@
 
             </div>
 
-            <x-button type="submit">
+            <x-submitbutton type="submit">
                 Create Account →
-            </x-button>
+            </x-submitbutton>
 
         </form>
 
