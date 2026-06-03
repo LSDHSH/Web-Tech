@@ -1,35 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="w-full max-w-2xl text-center">
-    
-    <h1 class="text-7xl font-black tracking-tighter uppercase mb-16">
+<a href="/profile" class="fixed top-6 right-36 p-3 bg-white dark:bg-stone-900 border-4 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none flex items-center gap-2 font-black uppercase tracking-wider text-sm transition-all z-50 cursor-pointer">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+    </svg>
+    <span class="hidden sm:inline">Profil</span>
+</a>
+
+<div class="text-center w-full max-w-xl mb-8 shrink-0 px-4">
+    <h1 class="text-6xl md:text-8xl font-black tracking-tighter uppercase">
         Guessle
     </h1>
+</div>
 
-    <div class="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+<div class="w-full max-w-xl bg-white dark:bg-stone-900 border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] overflow-hidden text-left flex flex-col">
+    
+    <div class="flex flex-col divide-y-4 divide-black dark:divide-white">
         
-        <div class="p-10 border-b-4 border-black bg-stone-50">
-            <a href="/demoquiz" class="block w-full py-6 px-8 bg-black text-white hover:bg-stone-800 font-bold text-2xl tracking-wide uppercase transition-colors text-center">
-                Start Quiz!
-            </a>
-            <p class="text-xs uppercase tracking-wider text-stone-500 mt-4 font-bold">1 Demoquiz ohne Anmeldung</p>
-        </div>
-
-        <div class="p-10 flex flex-col gap-5 bg-white">
-            <a href="/register" class="w-full py-4 px-6 bg-white hover:bg-stone-100 text-black font-black uppercase tracking-wider text-lg border-4 border-black transition-colors text-center">
-                Register
-            </a>
-            
-            <a href="/login" class="w-full py-3 px-6 bg-transparent hover:underline text-stone-600 hover:text-black font-black uppercase tracking-wider text-lg transition-all text-center">
-                Login
-            </a>
-        </div>
+        <x-quiz-link href="/quiz/countries" title="Countries" />
+        <x-quiz-link href="/quiz/movies" title="Movies" />
+        <x-quiz-link href="/quiz/celebs" title="Celebs" />
+        <x-quiz-link href="/quiz/sports" title="Sports" />
+        <x-quiz-link href="/quiz/videogames" title="Videogames" />
 
     </div>
 
-    <p class="text-sm uppercase tracking-widest text-stone-400 mt-12 px-6 font-sans font-bold">
-        Countries • Movies • Celebs • Sports • Videogames
-    </p>
 </div>
 @endsection
