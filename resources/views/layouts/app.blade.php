@@ -7,10 +7,7 @@
     
     <link rel="icon" href="/images/Logo.ico" type="image/x-icon">
     
-    <script
-        src="https://cdn.tailwindcss.com">
-        // TODO: Tailwind lokal einbinden, damit es auch ohne Internetverbindung funktioniert
-    </script>
+    <script src="/js/tailwindcss.js"></script>
 
     <script>
         // 1. Sofort prüfen und Klasse setzen bevor die Seite gerendert wird
