@@ -8,11 +8,8 @@
     <span class="hidden sm:inline">Profil</span>
 </a>
 
-<div class="text-center w-full max-w-xl mb-8 shrink-0 px-4">
-    <h1 class="text-6xl md:text-8xl font-black tracking-tighter uppercase">
-        Guessle
-    </h1>
-</div>
+
+<x-guessle-title-text1 />
 
 <div class="w-full max-w-xl bg-white dark:bg-stone-900 border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] overflow-hidden text-left flex flex-col">
     

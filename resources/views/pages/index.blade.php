@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<x-guessle-title-text1 />
+
 <div class="w-full max-w-2xl text-center">
-    
-    <h1 class="text-7xl font-black tracking-tighter uppercase mb-16">
-        Guessle
-    </h1>
 
     <div class="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
         
