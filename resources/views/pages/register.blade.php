@@ -38,6 +38,9 @@
                     <label for="reg-username" class="block text-sm uppercase font-black tracking-wider mb-2">
                         Username
                     </label>
+                    @error('username')
+                        <div class="text-red">{{ $message }}</div>
+                    @enderror
 
                     <input type="text"
                            id="reg-username"
@@ -51,6 +54,9 @@
                     <label for="reg-email" class="block text-sm uppercase font-black tracking-wider mb-2">
                         Email Address
                     </label>
+                    @error('email')
+                        <div class="text-red">{{ $message }}</div>
+                    @enderror
 
                     <input type="email"
                            id="reg-email"
@@ -64,6 +70,9 @@
                     <label for="reg-password" class="block text-sm uppercase font-black tracking-wider mb-2">
                         Password
                     </label>
+                    @error('password')
+                        <div class="text-red">{{ $message }}</div>
+                    @enderror
 
                     <input type="password"
                            id="reg-password"

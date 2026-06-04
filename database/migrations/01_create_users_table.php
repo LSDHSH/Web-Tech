@@ -35,6 +35,13 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        Schema::create('two_factor', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->index();
+            $table->string('code');
+            $table->integer('expires_at');
+        });
     }
 
     /**
