@@ -26,9 +26,19 @@
         <!-- Form -->
         <form action="/login" method="POST" class="p-6 sm:p-10 space-y-6 flex-1 flex flex-col justify-between">
             @csrf
+            @if (session('status'))
+                <div class="mb-4 rounded-lg bg-emerald-50 p-4 text-sm font-medium text-emerald-700 ring-1 ring-emerald-600/10">
+                    {{ session('status') }}
+                </div>
+            @endif
+            @error('email')
+                <div class="mb-4 rounded-lg bg-rose-50 p-4 text-sm font-medium text-rose-700 ring-1 ring-rose-600/10">
+                    {{ $message }}
+                </div>
+            @enderror
 
-            <div class="space-y-6">
-
+            <div class="space-y-6">   
+                
                 <div>
                     <label for="login-email" class="block text-sm uppercase font-black tracking-wider mb-2">
                         Email Address

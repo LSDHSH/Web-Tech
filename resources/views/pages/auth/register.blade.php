@@ -31,6 +31,15 @@
         <!-- Form -->
         <form action="/register" method="POST" class="p-6 sm:p-10 space-y-6 flex-1 flex flex-col justify-between">
             @csrf
+            @if ($errors->any())
+                <div class="mb-4 rounded-lg bg-rose-50 p-4 text-sm font-medium text-rose-700 ring-1 ring-rose-600/10">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
             <div class="space-y-5">
 
@@ -38,9 +47,6 @@
                     <label for="reg-username" class="block text-sm uppercase font-black tracking-wider mb-2">
                         Username
                     </label>
-                    @error('username')
-                        <div class="text-red">{{ $message }}</div>
-                    @enderror
 
                     <input type="text"
                            id="reg-username"
@@ -54,9 +60,6 @@
                     <label for="reg-email" class="block text-sm uppercase font-black tracking-wider mb-2">
                         Email Address
                     </label>
-                    @error('email')
-                        <div class="text-red">{{ $message }}</div>
-                    @enderror
 
                     <input type="email"
                            id="reg-email"
@@ -70,9 +73,6 @@
                     <label for="reg-password" class="block text-sm uppercase font-black tracking-wider mb-2">
                         Password
                     </label>
-                    @error('password')
-                        <div class="text-red">{{ $message }}</div>
-                    @enderror
 
                     <input type="password"
                            id="reg-password"
