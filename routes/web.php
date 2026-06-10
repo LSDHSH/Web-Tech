@@ -77,3 +77,13 @@ Route::get('/quiz', function ()
 {
   return view('pages.quiz');
 });
+
+Route::get('/home', function ()
+  {
+    return view('pages.home');
+  });
+
+Route::get('/profile', function ()
+{
+  return view('pages.profile');
+});
