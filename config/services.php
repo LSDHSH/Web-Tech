@@ -35,4 +35,12 @@ return [
         ],
     ],
 
+    'apiKeys' => [
+        'country'   => env('API_COUNTRY_KEY'),
+        'movie'     => env('API_MOVIE_KEY'),
+        'celebrity' => env('API_MOVIE_KEY'),
+        'sport'     => env('API_SPORT_KEY'),
+        'game'      => env('API_GAME_KEY'),
+    ]
+
 ];

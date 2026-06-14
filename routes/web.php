@@ -41,21 +41,7 @@ Route::middleware(['auth', 'verified'])->group(function ()
 });
 
 
-use Illuminate\Support\Facades\Mail;
-Route::get('/mail', function ()
-{
-  Mail::raw('Hallo! Das ist eine Test-Mail.', function ($message)
-  {
-    $message->to('schiller-manuela@gmx.net')->subject('Hallo von Justin!');
-  });
-  
-  return "E-Mail wurde erfolgreich gesendet!";
-});
-
-
-
-
-
+//!MUSS NOCH GEÄNDERT WERDEN
 
 // Hauptseite und weitere Anwendungsseiten
 Route::get('/', function ()
