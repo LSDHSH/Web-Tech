@@ -27,7 +27,7 @@
     </div>
 
     <p class="text-sm uppercase tracking-widest text-stone-400 mt-12 px-6 font-sans font-bold">
-        Countries • Movies • Celebs • Sports • Videogames
+        Countries • Movies • Football • Videogames
     </p>
 </div>
 @endsection

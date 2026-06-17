@@ -21,9 +21,6 @@
             <button onclick="switchTab('movies')" id="tab-movies" class="tab-btn flex-1 min-w-[90px] py-4 px-2 border-r-2 border-black dark:border-white text-center transition-colors bg-transparent text-black dark:text-white">
                 Filme
             </button>
-            <button onclick="switchTab('celebs')" id="tab-celebs" class="tab-btn flex-1 min-w-[90px] py-4 px-2 border-r-2 border-black dark:border-white text-center transition-colors bg-transparent text-black dark:text-white">
-                Promis
-            </button>
             <button onclick="switchTab('sports')" id="tab-sports" class="tab-btn flex-1 min-w-[90px] py-4 px-2 border-r-2 border-black dark:border-white text-center transition-colors bg-transparent text-black dark:text-white">
                 Sportler
             </button>

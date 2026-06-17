@@ -2,19 +2,19 @@
 
 @section('content')
     <x-quiz-board 
-        mode="Sportler" 
-        inputLabel="Welcher Athlet wird gesucht?" 
-        inputPlaceholder="Sportler eingeben (z.B. Messi...)" 
+        mode="Verein" 
+        inputLabel="Welcher Verein wird gesucht?" 
+        inputPlaceholder="Team eingeben (z.B. TSV Schilksee...)" 
         inputId="sport-input" 
         datalistId="sports" 
         tableBodyId="results-table"
     >
         <x-slot name="headers">
-            <th class="p-3 text-center min-w-[120px] border-r-2 border-black dark:border-white">Athlet</th>
+            <th class="p-3 text-center min-w-[120px] border-r-2 border-black dark:border-white">Verein</th>
             <th class="p-3 text-center min-w-[100px] border-r-2 border-black dark:border-white">Sportart</th>
             <th class="p-3 text-center min-w-[100px] border-r-2 border-black dark:border-white">Nation</th>
             <th class="p-3 text-center min-w-[80px] border-r-2 border-black dark:border-white">Alter</th>
-            <th class="p-3 text-center min-w-[80px]">Nummer</th>
+            <th class="p-3 text-center min-w-[80px]">Liga</th>
         </x-slot>
 
         <x-slot name="scripts">

@@ -25,7 +25,6 @@
     <div class="flex flex-col divide-y-4 divide-black dark:divide-white">
         <x-quiz-link href="/countries" title="Countries" />
         <x-quiz-link href="/movies" title="Movies" />
-        <x-quiz-link href="/celebs" title="Celebs" />
         <x-quiz-link href="/sports" title="Sports" />
         <x-quiz-link href="/videogames" title="Videogames" />
     </div>
