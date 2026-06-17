@@ -4,11 +4,7 @@
 
     <div class="text-center w-full max-w-xl mb-8 shrink-0">
         <x-guessle-title-text1 />
-
-        <a href="/home"
-           class="inline-flex items-center text-sm uppercase tracking-wider text-stone-500 hover:text-black dark:hover:text-white font-bold transition-colors mb-4">
-            ← Zurück zur Startseite
-        </a>
+        <x-return-home/>
     </div>
 
     <div class="w-full max-w-xl bg-white dark:bg-stone-900 border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] overflow-hidden text-left flex flex-col">

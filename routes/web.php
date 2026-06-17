@@ -129,7 +129,6 @@ Route::get('/countries', function ()
     return view('pages.videogames');
   });
 
-  Route::get('/test-404', function () {
-    // Das triggert sofort eure errors.404 View
-    abort(404); 
+  Route::get('/scoreboard', function () {
+    return view('pages.scoreboard');
   });
