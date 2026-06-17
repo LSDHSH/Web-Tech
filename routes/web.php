@@ -37,6 +37,36 @@ Route::middleware(['auth', 'verified'])->group(function ()
   {
     return view('pages.home');
   });
+
+  Route::get('/profile', function ()
+  {
+    return view('pages.profile');
+  });
+
+  Route::get('/countries', function ()
+  {
+    return view('pages.countries');
+  });
+
+  Route::get('/celebs', function ()
+  {
+    return view('pages.celebs');
+  });
+
+  Route::get('/movies', function ()
+  {
+    return view('pages.movies');
+  });
+
+  Route::get('/sports', function ()
+  {
+    return view('pages.sports');
+  });
+
+  Route::get('/videogames', function ()
+  {
+    return view('pages.videogames');
+  });
   
 });
 
@@ -73,3 +103,33 @@ Route::get('/profile', function ()
 {
   return view('pages.profile');
 });
+
+Route::get('/countries', function ()
+  {
+    return view('pages.countries');
+  });
+
+  Route::get('/celebs', function ()
+  {
+    return view('pages.celebs');
+  });
+
+  Route::get('/movies', function ()
+  {
+    return view('pages.movies');
+  });
+
+  Route::get('/sports', function ()
+  {
+    return view('pages.sports');
+  });
+
+  Route::get('/videogames', function ()
+  {
+    return view('pages.videogames');
+  });
+
+  Route::get('/test-404', function () {
+    // Das triggert sofort eure errors.404 View
+    abort(404); 
+  });
