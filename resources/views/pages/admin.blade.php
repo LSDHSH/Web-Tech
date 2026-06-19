@@ -30,7 +30,7 @@
                         <th class="p-4 border-r-2 border-black dark:border-white">Benutzername</th>
                         <th class="p-4 border-r-2 border-black dark:border-white">Email</th>
                         <th class="p-4 border-r-2 border-black dark:border-white">Rolle</th>
-                        <th class="p-4 text-center">Entfernen</th>
+                        <th class="p-4 text-center">Löschen</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y-2 divide-black dark:divide-white text-sm font-medium text-black dark:text-white">
