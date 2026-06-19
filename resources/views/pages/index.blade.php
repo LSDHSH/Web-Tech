@@ -16,8 +16,8 @@
             </p>
         </div>
 
-        <div class="p-10 flex flex-col gap-5 bg-white dark:bg-stone-900">
-            <a href="/register" class="w-full py-4 px-6 bg-white dark:bg-stone-900 hover:bg-stone-100 dark:hover:bg-stone-800 text-black dark:text-white font-black uppercase tracking-wider text-lg border-4 border-black dark:border-white transition-colors text-center">
+        <div class="p-10 flex flex-col gap-5 bg-white dark:border-white bg-stone-50 dark:bg-stone-800">
+            <a href="/register" class="w-full py-4 px-6 bg-white dark:bg-stone-800 hover:bg-stone-100 dark:hover:bg-stone-800 text-black dark:text-white font-black uppercase tracking-wider text-lg border-4 border-black dark:border-white transition-colors text-center">
                 Sign up
             </a>
             

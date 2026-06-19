@@ -1,25 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="sm:mx-auto sm:w-full sm:max-w-md">
-    <div class="bg-white px-6 py-12 shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl sm:px-12">
+<div class="min-h-screen w-full flex flex-col items-center justify-center px-4 bg-white dark:bg-stone-950 transition-colors">
+    
+    <div class="w-full max-w-[600px] bg-white dark:bg-stone-900 border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] overflow-hidden text-left flex flex-col p-6 sm:p-10">
         
         <div class="text-center mb-8">
-            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-2xl">
+            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-stone-100 dark:bg-stone-800 text-3xl border-4 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
                 🔒
             </div>
-            <h2 class="mt-4 text-2xl font-bold tracking-tight text-gray-900">Zwei-Faktor-Schutz</h2>
-            <p class="mt-2 text-sm text-gray-500">Wir haben einen 6-stelligen Code an deine E-Mail-Adresse gesendet.</p>
+            <h2 class="mt-6 text-2xl font-black uppercase tracking-wider text-black dark:text-white">Zwei-Faktor-Schutz</h2>
+            <p class="mt-2 text-sm font-bold uppercase tracking-wide text-stone-500 dark:text-stone-400">Wir haben einen 6-stelligen Code an deine E-Mail-Adresse gesendet.</p>
         </div>
 
+        {{-- Status Notification --}}
         @if (session('status'))
-            <div class="mb-4 rounded-lg bg-emerald-50 p-4 text-center text-sm font-medium text-emerald-700 ring-1 ring-emerald-600/10">
+            <div class="mb-4 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 p-4 text-center text-sm font-medium text-emerald-700 dark:text-emerald-400 ring-1 ring-emerald-600/10 dark:ring-emerald-500/20">
                 {{ session('status') }}
             </div>
         @endif
 
+        {{-- Error Notification --}}
         @if ($errors->has('code'))
-            <div class="mb-4 rounded-lg bg-rose-50 p-4 text-center text-sm font-medium text-rose-700 ring-1 ring-rose-600/10">
+            <div class="mb-4 rounded-lg bg-rose-50 dark:bg-rose-950/30 p-4 text-center text-sm font-medium text-rose-700 dark:text-rose-400 ring-1 ring-rose-600/10 dark:ring-rose-500/20">
                 {{ $errors->first('code') }}
             </div>
         @endif
@@ -27,25 +30,24 @@
         <form action="/2fa" method="POST" class="space-y-6">
             @csrf
             <div>
-                <label for="code" class="block text-sm font-medium text-gray-700 text-center mb-2">
+                <label for="code" class="block text-sm uppercase font-black tracking-wider text-black dark:text-white mb-2">
                     Bestätigungscode eingeben
                 </label>
                 <div class="mt-1">
                     <input type="text" id="code" name="code" placeholder="123456" required autofocus
-                        class="block w-full rounded-lg border-0 py-3 text-center text-2xl font-semibold tracking-[0.5em] text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-2xl">
+                        class="w-full p-3 sm:p-4 bg-white dark:bg-stone-900 border-4 border-black dark:border-white text-black dark:text-white font-mono text-2xl font-black text-center tracking-[0.3em] focus:outline-none focus:bg-white dark:focus:bg-stone-800 placeholder-stone-300 dark:placeholder-stone-600">
                 </div>
             </div>
 
             <div>
-                <button type="submit" 
-                    class="flex w-full justify-center rounded-lg bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors duration-150">
-                    Code verifizieren
-                </button>
+                <x-submitbutton type="submit">
+                    Code verifizieren →
+                </x-submitbutton>
             </div>
         </form>
 
-        <div class="mt-6 text-center text-sm">
-            <a href="/2fa-resend" class="font-medium text-blue-600 hover:text-blue-500 transition-colors duration-150">
+        <div class="mt-6 text-center">
+            <a href="/2fa-resend" class="text-xs uppercase tracking-wider text-stone-400 dark:text-stone-500 hover:text-black dark:hover:text-white hover:underline font-bold transition-colors">
                 Code erneut senden
             </a>
         </div>
