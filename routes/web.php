@@ -67,6 +67,8 @@ Route::middleware(['auth', 'verified'])->group(function ()
   {
     return view('pages.videogames');
   });
+
+  
   
 });
 
@@ -131,4 +133,8 @@ Route::get('/countries', function ()
 
   Route::get('/scoreboard', function () {
     return view('pages.scoreboard');
+  });
+
+  Route::get('/admin', function () {
+    return view('pages.admin');
   });

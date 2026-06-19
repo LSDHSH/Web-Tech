@@ -18,6 +18,13 @@
     <span class="hidden sm:inline">Scoreboard</span>
 </a>
 
+<a href="/admin" class="fixed top-6 right-[21rem] p-3 bg-white dark:bg-stone-900 text-black dark:text-white border-4 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none flex items-center gap-2 font-black uppercase tracking-wider text-sm transition-all z-50 cursor-pointer">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A1.79 1.79 0 1 1 14.75 23.5l-5.83-5.83m0 0a3.99 3.99 0 0 1-1.35-3.05 4 4 0 1 1 5.66 0m-4.31 3.83L3.38 21.05a1.79 1.79 0 1 1-2.54-2.54l4.17-4.17m1.15 1.15L3.5 12.82m12.4-7.92a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+    </svg>
+    <span class="hidden sm:inline">Admin</span>
+</a>
+
 <!-- Titel und Navigation -->
 <x-guessle-title-text1 />
 
