@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="min-h-screen flex flex-col items-center justify-center px-4 bg-white dark:bg-stone-950 transition-colors">
+<div class="min-h-screen flex flex-col items-center justify-center px-4 bg-stone-50 dark:bg-stone-950 transition-colors">
 
     <div class="text-center w-full max-w-[600px] mb-8">
         <a href="/index" class="inline-flex items-center text-sm uppercase tracking-wider text-stone-500 hover:text-black dark:hover:text-white font-bold transition-colors">
