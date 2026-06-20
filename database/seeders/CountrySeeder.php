@@ -24,7 +24,7 @@ class CountrySeeder extends Seeder
         [
           'limit'  => 100,
           'offset' => $i,
-          'response_fields' => 'names.translations.deu.official,codes.alpha_2'
+          'response_fields' => 'names.translations.deu.common,codes.alpha_3'
         ]);
         
         if ($response->successful())
@@ -34,8 +34,8 @@ class CountrySeeder extends Seeder
           $countries = collect($json['data']['objects'])
           ->map(function ($country)
           {
-            $name = $country['names']['translations']['deu']['official'] ?? null;
-            $code = $country['codes']['alpha_2'] ?? null;
+            $name = $country['names']['translations']['deu']['common'] ?? null;
+            $code = $country['codes']['alpha_3'] ?? null;
             
             if (!$name || !$code)
               return null;

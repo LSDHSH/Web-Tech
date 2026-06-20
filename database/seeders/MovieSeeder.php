@@ -23,10 +23,9 @@ class MovieSeeder extends Seeder
         ->timeout(5)
         ->get('https://api.themoviedb.org/3/discover/movie',
         [
-          'language' => 'de-DE',
-          'include_video'  => true,
+          'language' => 'en-US',
           'page' => $i,
-          'vote_average.gte' => 7.0,
+          'vote_average.gte' => 8.0,
           'vote_count.gte' => 500
         ]);
         
