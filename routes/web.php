@@ -53,7 +53,7 @@ Route::middleware(['auth', 'verified'])->group(function ()
 // ==========================================
 // Admin Bereich (Passwort + E-Mail + 2FA + Admin)
 // ==========================================
-Route::middleware(['auth', 'can:admin'])->group(function ()
+Route::middleware(['auth', 'admin'])->group(function ()
 {
   Route::get('/admin', [AdminController::class, 'index']);
   Route::post('/admin/update/{user}', [AdminController::class, 'update']);
