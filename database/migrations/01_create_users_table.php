@@ -18,6 +18,7 @@ return new class extends Migration
       $table->string('two_factor_code')->nullable();
       $table->timestamp('two_factor_expires_at')->nullable();
       $table->rememberToken();
+      $table->timestamp('last_login')->nullable();
       $table->timestamps();
     });
     

@@ -24,7 +24,7 @@ class AuthController extends Controller
     ]);
 		
 		if (! Auth::validate($credentials))
-			return back()->withErrors(['email' => 'Die angegebenen Anmeldedaten sind falsch.',]);
+			return back()->withErrors(['email' => 'The login details provided are incorrect.',]);
 		
 		$user = User::where('email', $credentials['email'])->first();
 		$code = random_int(100000, 999999);
@@ -36,9 +36,9 @@ class AuthController extends Controller
 		
 		session(['2fa_user' => $user->id,]);
 		
-		Mail::raw("Dein Zwei-Faktor-Code lautet: $code", function ($message) use ($user)
+		Mail::raw("Your two-factor code is: $code", function ($message) use ($user)
 		{
-			$message->to($user->email)->subject('Dein Login-Code');
+			$message->to($user->email)->subject('Your login code');
 		});
 		
 		return redirect('/2fa');
@@ -48,7 +48,6 @@ class AuthController extends Controller
 	{
 		Auth::logout();
 		session()->forget('2fa_user');
-		$request->session()->invalidate();
 		$request->session()->regenerateToken();
 		return redirect('/login');
 	}

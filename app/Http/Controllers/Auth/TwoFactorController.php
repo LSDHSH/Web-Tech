@@ -42,10 +42,9 @@ class TwoFactorController extends Controller
 			return redirect('/home');
 		}
 		
-		return back()->withErrors(['code' => 'Ungültig oder abgelaufen']);
+		return back()->withErrors(['code' => 'Invalid or expired']);
 	}
 	
-	// Code erneut senden, falls die Mail verloren ging
 	public function resend()
 	{
 		$user = User::find(session('2fa_user'));
@@ -57,11 +56,11 @@ class TwoFactorController extends Controller
 			'two_factor_expires_at' => Carbon::now()->addMinutes(10),
 		])->save();
 		
-		Mail::raw("Dein neuer Zwei-Faktor-Code lautet: $code", function ($message) use ($user)
+		Mail::raw("Your new two-factor code is: $code", function ($message) use ($user)
 		{
-			$message->to($user->email)->subject('Dein neuer Login-Bestätigungscode');
+			$message->to($user->email)->subject('Your new login confirmation code');
 		});
 		
-		return back()->with('status', 'Ein neuer Code wurde an dein Postfach gesendet.');
+		return back()->with('status', 'A new code has been sent to your inbox.');
 	}
 }

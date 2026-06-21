@@ -36,9 +36,9 @@ class RegisterController extends Controller
 		
     $url = URL::temporarySignedRoute('verify', Carbon::now()->addMinutes(5));
 		
-    Mail::raw("Hi! Klicke hier um dein Konto zu aktivieren:\n\n{$url}", function ($message) use ($request)
+    Mail::raw("Hi! Click here to activate your account:\n\n{$url}", function ($message) use ($request)
 		{
-			$message->to($request->email)->subject('Konto aktivieren');
+			$message->to($request->email)->subject('Activate account');
     });
 		
 		return view('pages.auth.verify');
@@ -49,10 +49,10 @@ class RegisterController extends Controller
     $registration = session('registration');
 		
     if (!$registration)
-			return redirect('/register')->withErrors(['session' => 'Registrierung abgelaufen.']);
+			return redirect('/register')->withErrors(['session' => 'Registration expired.']);
 		
     if (User::where('email', $registration['email'])->exists())
-      return redirect('/register')->withErrors(['email' => 'Diese E-Mail-Adresse wurde bereits registriert.']);
+      return redirect('/register')->withErrors(['email' => 'This email address has already been registered.']);
 		
     User::create(
 		[
@@ -63,6 +63,6 @@ class RegisterController extends Controller
     ]);
 		
     session()->forget('registration');
-		return redirect('/login')->with('status', 'Dein Account wurde erfolgreich erstellt!');
+		return redirect('/login')->with('status', 'Your account was successfully created!');
 	}
 }

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\WordleController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\TwoFactorController;
@@ -10,6 +13,8 @@ use App\Http\Controllers\Auth\TwoFactorController;
 // ==========================================
 Route::middleware('guest')->group(function ()
 {
+  Route::view('/', 'pages.index');
+  
   Route::get('/login', [AuthController::class, 'show'])->name('login');
   Route::post('/login', [AuthController::class, 'login']);
   
@@ -33,108 +38,24 @@ Route::middleware(['auth', 'verified'])->group(function ()
 { 
   Route::post('/logout', [AuthController::class, 'logout']);
   
-  Route::get('/home', function ()
-  {
-    return view('pages.home');
-  });
-
-  Route::get('/profile', function ()
-  {
-    return view('pages.profile');
-  });
-
-  Route::get('/countries', function ()
-  {
-    return view('pages.countries');
-  });
-
-  Route::get('/celebs', function ()
-  {
-    return view('pages.celebs');
-  });
-
-  Route::get('/movies', function ()
-  {
-    return view('pages.movies');
-  });
-
-  Route::get('/sports', function ()
-  {
-    return view('pages.sports');
-  });
-
-  Route::get('/videogames', function ()
-  {
-    return view('pages.videogames');
-  });
-
+  Route::get('/{mode}/wordle', [WordleController::class, 'show'])
+  ->whereIn('mode', ['countries', 'movies', 'series', 'games']);
+  Route::post('/{mode}/wordle/guess', [WordleController::class, 'guess'])
+  ->whereIn('mode', ['countries', 'movies', 'series', 'games']);
   
+  Route::get('/profile', [UserController::class, 'edit']);
+  Route::put('/profile/update', [UserController::class, 'update']);
+  Route::delete('/profile/delete', [UserController::class, 'destroy']);
   
+  Route::view('/home', 'pages.home');
 });
 
-
-//!MUSS NOCH GEÄNDERT WERDEN
-
-// Hauptseite und weitere Anwendungsseiten
-Route::get('/', function ()
+// ==========================================
+// Admin Bereich (Passwort + E-Mail + 2FA + Admin)
+// ==========================================
+Route::middleware(['auth', 'can:admin'])->group(function ()
 {
-  return view('pages.index');
+  Route::get('/admin', [AdminController::class, 'index']);
+  Route::post('/admin/update/{user}', [AdminController::class, 'update']);
+  Route::post('/admin/delete/{user}', [AdminController::class, 'destroy']);
 });
-
-Route::get('/index', function ()
-{
-  return view('pages.index');
-});
-
-Route::get('/demoquiz', function ()
-{
-  return view('pages.demoquiz');
-});   
-
-Route::get('/quiz', function ()
-{
-  return view('pages.quiz');
-});
-
-Route::get('/home', function ()
-  {
-    return view('pages.home');
-  });
-
-Route::get('/profile', function ()
-{
-  return view('pages.profile');
-});
-
-Route::get('/countries', function ()
-  {
-    return view('pages.countries');
-  });
-
-  Route::get('/celebs', function ()
-  {
-    return view('pages.celebs');
-  });
-
-  Route::get('/movies', function ()
-  {
-    return view('pages.movies');
-  });
-
-  Route::get('/sports', function ()
-  {
-    return view('pages.sports');
-  });
-
-  Route::get('/videogames', function ()
-  {
-    return view('pages.videogames');
-  });
-
-  Route::get('/scoreboard', function () {
-    return view('pages.scoreboard');
-  });
-
-  Route::get('/admin', function () {
-    return view('pages.admin');
-  });
