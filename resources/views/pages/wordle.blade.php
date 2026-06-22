@@ -197,7 +197,7 @@
           <h3 class="text-xl sm:text-2xl mb-1">Game Over</h3>
           <p class="text-xs sm:text-sm font-bold">All attempts exhausted. The solution was:</p>
           <div class="mt-2 inline-block bg-black text-white px-4 py-1 border-2 border-black font-mono text-base tracking-widest">
-            ${solution || 'Unbekannt'}
+            ${solution || 'Unknown'}
           </div>
         `;
       }
