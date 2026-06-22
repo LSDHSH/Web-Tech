@@ -23,7 +23,7 @@
   <div class="w-full mt-8 aspect-video border-4 border-black dark:border-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] bg-black">
     <iframe 
       class="w-full h-full" 
-      src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+      src="https://www.youtube.com/embed/Jy6dXjAtnnc" 
       title="YouTube video player" 
       frameborder="0" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
