@@ -19,7 +19,7 @@ class WordleService
       'movies'    => MovieMode::class,
       'series'    => SeriesMode::class,
       'countries' => CountryMode::class,
-      default     => abort(404, "Für den Modus [{$mode}] ist kein Spielmodus registriert."),
+      default     => abort(404, "There is no game for this category: {$mode}."),
     };
     
     return app($class);
@@ -56,7 +56,7 @@ class WordleService
       'label'            => $class->getLabel(),
       'headers'          => array_map(fn($item) => $item[0], array_values($schema)),
       'options'          => $repo->allNames(),
-      'max_attempts'     => $maxAttempts, // JETZT DYNAMISCH
+      'max_attempts'     => $maxAttempts,
       'current_attempts' => $state['attempts'],
       'game_status'      => $state['status'],
       'history'          => $state['history'],
@@ -64,7 +64,7 @@ class WordleService
     ];
     
     if ($state['status'] === 'lost' && $solution)
-      $data['solution'] = $solution['name'] ?? 'Unbekannt';
+      $data['solution'] = $solution['name'] ?? 'Unknown';
     
     return $data;
   }
@@ -78,14 +78,14 @@ class WordleService
     $guessEntity = $repo->findByName($guess);
     
     if (!$solution)
-      throw new \Exception("Für heute wurde noch kein Wordle generiert.", 404);
+      throw new \Exception("No Wordl was generated today.", 404);
     
     if (!$guessEntity)
-      throw new \Exception("Der Tipp existiert nicht in der Datenbank.", 422);
+      throw new \Exception("Your guess doesnt exist in our database.", 422);
     
     $state = $this->getGameState($modeStr);
     if ($state['status'] !== 'playing')
-      throw new \Exception("Dieses Spiel für heute ist bereits beendet.", 400);
+      throw new \Exception("Todays wordle is already over.", 400);
     
     $maxAttempts = method_exists($mode, 'getMaxAttempts') ? $mode->getMaxAttempts() : 8;    
     $schema = $mode->getSchema();
@@ -142,7 +142,7 @@ class WordleService
     ];
     
     if ($state['status'] === 'lost')
-      $response['solution'] = $solution['name'] ?? 'Unbekannt';
+      $response['solution'] = $solution['name'] ?? 'Unknown';
     
     return $response;
   }
