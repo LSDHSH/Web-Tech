@@ -34,8 +34,8 @@
 	</script>
 </head>
 
-<body class="relative flex flex-col items-center justify-center min-h-screen p-4 md:p-10 font-mono antialiased bg-stone-50 dark:bg-stone-950 text-black dark:text-white transition-colors duration-200">
-	<div class="fixed top-6 left-6 right-6 flex items-center gap-3 z-50">
+<header>
+<div class="fixed top-6 left-6 right-6 flex items-center gap-3 z-50">
 		<x-nav.button id="theme-toggle" onclick="toggleDarkMode()" class="mr-auto">
 			<span class="dark:hidden">🌙</span>
 			<span class="hidden dark:inline">☀️</span>
@@ -47,6 +47,10 @@
 			</header>
 		@endauth
 	</div>
+</header>
+
+<body class="relative flex flex-col items-center justify-center min-h-screen p-4 md:p-10 font-mono antialiased bg-stone-50 dark:bg-stone-950 text-black dark:text-white transition-colors duration-200">
+	
 	
 	<main class="flex flex-col items-center justify-center w-full">
 		@yield('content')

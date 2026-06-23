@@ -54,13 +54,15 @@ class RegisterController extends Controller
     if (User::where('email', $registration['email'])->exists())
       return redirect('/register')->withErrors(['email' => 'This email address has already been registered.']);
 		
-    User::create(
+    $user = User::create(
 		[
 			'name' => $registration['name'],
 			'email' => $registration['email'],
 			'password' => $registration['password'],
 			'email_verified_at' => now(),
     ]);
+
+		$user->roles()->attach(2);
 		
     session()->forget('registration');
 		return redirect('/login')->with('status', 'Your account was successfully created!');
