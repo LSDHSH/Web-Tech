@@ -1,16 +1,17 @@
 # Web-Tech
 
-Konzept: Wer bin Ich? -> Im Prinzip ist es ein „Wordle“. Du musst aber nicht Wörter erraten, sondern beispielsweise eine versteckte Flagge finden oder einen Film anhand der Darsteller erraten.
-
+Konzept: Wer bin Ich? -> Im Prinzip ist es ein „Wordle“. Du musst aber nicht Wörter erraten, sondern beispielsweise ein Land an Hand der Attribute erraten.
 Team: Justin Jürgens, Aleksander Freudenberg, Erik Storma, Leif Schönauer
 
-Daten: Länder, Filme, Spiele, Sportarten
+Daten: Länder, Filme, Spiele, Serien
 
-Lokal speichern: Benutzerdaten, Score, Bewertung
+Lokal speichern: Benutzerdaten
 
-Technologien: Tailwind, HTML, JS, PHP, MariaDB, NGINX, Docker
+Rollenkonzept: Öffentlicher Bereich, Eingeloggte Useransicht, Adminbereich
 
-Funktionen: Registrierung, Login, Profil-Settings, Homepage mit Seitenbeschreibung, Privater Bereich, Öffentlicher Bereich, 1 Demoquiz -> danach anmelden, Bestätigungsmail, Youtubetutorial -> wie funktioniert das Spiel, Adminoberfläche, Darkmode
+Technologien: Tailwind, HTML, JS, PHP, MariaDB, NGINX, APIs
+
+Features: Guessle Spiel, Registrierung, Login, Profil-Settings, Homepage, Privater Bereich, 2FA, Youtubetutorial, Darkmode, Automatische Anspassung nach Gerät
 
 
 
