@@ -43,7 +43,7 @@ class WordleController extends Controller
     }
     catch (\Exception $e)
     {
-      return response()->json(['error' => $e->getMessage()], 422);
+      return response()->json(['error' => "Failed to call API"], 422);
     }
   }
 }
