@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Throwable;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -24,22 +25,40 @@ class AuthController extends Controller
     ]);
 		
 		if (! Auth::validate($credentials))
-			return back()->withErrors(['email' => 'The login details provided are incorrect.',]);
+			return back()->withInput()->withErrors(['email' => 'The login details provided are incorrect.',]);
 		
 		$user = User::where('email', $credentials['email'])->first();
 		$code = random_int(100000, 999999);
 		
-		$user->fill([
+		$user->fill(
+		[
 			'two_factor_code' => $code,
 			'two_factor_expires_at' => now()->addMinutes(10),
 		])->save();
 		
 		session(['2fa_user' => $user->id,]);
-		
-		Mail::raw("Your two-factor code is: $code", function ($message) use ($user)
+
+		try
 		{
-			$message->to($user->email)->subject('Your login code');
-		});
+			Mail::raw("Your two-factor code is: $code", function ($message) use ($user)
+			{
+				$message->to($user->email)->subject('Your login code');
+			});
+		}
+		catch (Throwable $e)
+		{
+			session()->forget('2fa_user');
+      
+      $user->fill(
+			[
+        'two_factor_code' => null,
+        'two_factor_expires_at' => null,
+      ])->save();
+
+      logger()->error("FA mail delivery failed: {$e->getMessage()}");
+
+      return back()->withInput()->withErrors(['email' => 'The confirmation code could not be sent. Please try again later.']);
+		}
 		
 		return redirect('/2fa');
 	}

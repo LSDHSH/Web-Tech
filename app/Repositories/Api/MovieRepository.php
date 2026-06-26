@@ -26,6 +26,9 @@ class MovieRepository implements ApiRepositoryInterface
     ->get('external_id')
     ->first();
     
+    if (!$random)
+      return [];
+
     return $this->get($random->external_id);
   }
   
@@ -79,6 +82,7 @@ class MovieRepository implements ApiRepositoryInterface
         'video'         => $video,
       ];
     }
+    return [];
   }
   
   private function formatLogos(?array $items, string $keyName, string $size = 'w300'): array
@@ -113,6 +117,7 @@ class MovieRepository implements ApiRepositoryInterface
     if (!$result)
       return null;
     
-    return $this->get($result->external_id);
+    $movie = $this->get($result->external_id);
+    return empty($movie) ? null : $movie;
   }
 }

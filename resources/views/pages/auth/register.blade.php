@@ -5,12 +5,11 @@
   <form action="/register" method="POST" class="p-6 sm:p-10 space-y-6 flex-1 flex flex-col justify-between">
     @csrf
     
-    {{-- Error Notification --}}
     @if ($errors->any())
       <div class="mb-4 rounded-lg bg-rose-50 dark:bg-rose-950/30 p-4 text-sm font-medium text-rose-700 dark:text-rose-400 ring-1 ring-rose-600/10 dark:ring-rose-500/20">
         <ul class="list-disc pl-4 space-y-1">
           @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
+            {{ $error }}
           @endforeach
         </ul>
       </div>

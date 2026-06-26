@@ -49,13 +49,20 @@ class WordleService
     $maxAttempts = method_exists($class, 'getMaxAttempts') ? $class->getMaxAttempts() : 8;
     $state = $this->getGameState($mode);
     $solution = $repo->getDailyWordle();
+    $names = $repo->allNames();
     
+    if (!$solution)
+      throw new \Exception("No Wordl was generated today.", 503);
+    
+    if (!$names)
+      throw new \Exception("Mode isn't migrated yet.", 503);
+
     $data =
     [
       'mode'             => $mode,
       'label'            => $class->getLabel(),
       'headers'          => array_map(fn($item) => $item[0], array_values($schema)),
-      'options'          => $repo->allNames(),
+      'options'          => $names,
       'max_attempts'     => $maxAttempts,
       'current_attempts' => $state['attempts'],
       'game_status'      => $state['status'],

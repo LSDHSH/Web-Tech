@@ -16,7 +16,6 @@
       </div>
     @endif
     
-    {{-- Error Notification --}}
     @if ($errors->has('code'))
       <div class="mb-4 rounded-lg bg-rose-50 dark:bg-rose-950/30 p-4 text-center text-sm font-medium text-rose-700 dark:text-rose-400 ring-1 ring-rose-600/10 dark:ring-rose-500/20">
         {{ $errors->first('code') }}

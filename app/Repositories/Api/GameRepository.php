@@ -25,6 +25,9 @@ class GameRepository implements ApiRepositoryInterface
     ->inRandomOrder()
     ->get('external_id')
     ->first();
+
+    if (!$random)
+      return [];
     
     return $this->get($random->external_id);
   }
@@ -64,6 +67,7 @@ class GameRepository implements ApiRepositoryInterface
         'background'    => $game['background_image'],
       ];
     }
+    return [];
   }
   
   public function getDailyWordle(): ?array
@@ -87,6 +91,7 @@ class GameRepository implements ApiRepositoryInterface
     if (!$result)
       return null;
     
-    return $this->get($result->external_id);
+    $game = $this->get($result->external_id);
+    return empty($game) ? null : $game;
   }
 }

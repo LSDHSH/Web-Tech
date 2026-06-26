@@ -25,6 +25,9 @@ class CountryRepository implements ApiRepositoryInterface
     ->inRandomOrder()
     ->get('external_id')
     ->first();
+
+    if (!$random)
+      return [];
     
     return $this->get($random->external_id);
   }
@@ -70,6 +73,7 @@ class CountryRepository implements ApiRepositoryInterface
         'flag'          => $country['flag']['url_png'],
       ];
     }
+    return [];
   }
   
   public function getDailyWordle(): ?array
@@ -93,6 +97,7 @@ class CountryRepository implements ApiRepositoryInterface
     if (!$result)
       return null;
     
-    return $this->get($result->external_id);
+    $country = $this->get($result->external_id);
+    return empty($country) ? null : $country;
   }
 }

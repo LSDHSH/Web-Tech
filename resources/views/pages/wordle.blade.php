@@ -2,7 +2,18 @@
 
 @section('content')
 
+
+
 <x-wordle.box>
+  @if ($errors->any())
+    <div class="mb-4 rounded-lg bg-rose-50 dark:bg-rose-950/30 p-4 text-sm font-medium text-rose-700 dark:text-rose-400 ring-1 ring-rose-600/10 dark:ring-rose-500/20">
+      <ul class="list-disc pl-4 space-y-1">
+        @foreach ($errors->all() as $error)
+          {{ $error }}
+        @endforeach
+      </ul>
+    </div>
+  @endif
   <x-wordle.info :mode="$mode" :maxAttempts="$max_attempts" />
   <x-wordle.input :label="$label" :options="$options" />
   <x-wordle.table :headers="$headers" />
@@ -79,7 +90,7 @@
         if (!response.ok)
         {
           const errorData = await response.json();
-          throw new Error(errorData.error || 'Ein Fehler ist aufgetreten.');
+          throw new Error(errorData.error || 'An Error occured.');
         }
         
         const data = await response.json();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Throwable;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Services\WordleService;
@@ -15,10 +16,17 @@ class WordleController extends Controller
     $this->service = $service;
   }
   
-  public function show(string $mode): View
+  public function show(string $mode)
   {
-    $game = $this->service->start($mode);
-    return view('pages.wordle', $game);
+    try
+    {
+      $game = $this->service->start($mode);
+      return view('pages.wordle', $game);
+    }
+    catch (Throwable $e)
+    {
+      return back()->withErrors(['game_error' => $e->getMessage()]);
+    }
   }
   
   public function guess(Request $request, string $mode)

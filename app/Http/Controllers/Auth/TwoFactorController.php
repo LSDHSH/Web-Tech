@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Throwable;
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,6 +14,9 @@ class TwoFactorController extends Controller
 {
 	public function show()
 	{
+		if (!session()->has('2fa_user'))
+      return redirect('/login');
+    
 		return view('pages.auth.2fa');
 	}
 	
@@ -42,7 +46,7 @@ class TwoFactorController extends Controller
 			return redirect('/home');
 		}
 		
-		return back()->withErrors(['code' => 'Invalid or expired']);
+		return back()->withInput()->withErrors(['code' => 'Invalid or expired']);
 	}
 	
 	public function resend()
@@ -56,11 +60,25 @@ class TwoFactorController extends Controller
 			'two_factor_expires_at' => Carbon::now()->addMinutes(10),
 		])->save();
 		
-		Mail::raw("Your new two-factor code is: $code", function ($message) use ($user)
+		try
 		{
-			$message->to($user->email)->subject('Your new login confirmation code');
-		});
+			Mail::raw("Your new two-factor code is: $code", function ($message) use ($user)
+			{
+				$message->to($user->email)->subject('Your new login confirmation code');
+			});
+		}
+		catch (Throwable $e)
+		{
+      $user->fill(
+      [
+        'two_factor_code' => $user->two_factor_code,
+        'two_factor_expires_at' => $user->two_factor_code,
+      ])->save();
+
+      logger()->error("2FA resend failed: {$e->getMessage()}");
+      return back()->withInput()->withErrors(['code' => 'The new code could not be sent. Please try again.']);
+    }
 		
-		return back()->with('status', 'A new code has been sent to your inbox.');
+		return back()->withInput()->with('status', 'A new code has been sent to your inbox.');
 	}
 }

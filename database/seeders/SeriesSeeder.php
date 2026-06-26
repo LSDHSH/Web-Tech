@@ -27,7 +27,8 @@ class SeriesSeeder extends Seeder
           'page' => $i,
           'vote_average.gte' => 8.0,
           'vote_count.gte' => 500
-        ]);
+        ])
+        ->throw();
         
         if ($response->successful())
         {
@@ -70,7 +71,7 @@ class SeriesSeeder extends Seeder
     }
     catch (\Exception $e)
     {
-      Log::error("TheMovieDB API Fehler: " . $e->getMessage());
+      Log::error("TheMovieDB API Fehler: {$e->getMessage()}");
     }
   }
 }

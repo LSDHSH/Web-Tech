@@ -26,7 +26,8 @@ class GameSeeder extends Seeder
           'page' => $i,
           'page_size' => 40,
           'metacritic' => '80,100',
-        ]);
+        ])
+        ->throw();
         
         if ($response->successful())
         {
@@ -71,7 +72,7 @@ class GameSeeder extends Seeder
     }
     catch (\Exception $e)
     {
-      Log::error("RAWG API Fehler: " . $e->getMessage());
+      Log::error("RAWG API Fehler: {$e->getMessage()}");
     }
   }
 }

@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Throwable;
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
@@ -36,11 +35,20 @@ class RegisterController extends Controller
 		
     $url = URL::temporarySignedRoute('verify', Carbon::now()->addMinutes(5));
 		
-    Mail::raw("Hi! Click here to activate your account:\n\n{$url}", function ($message) use ($request)
+		try
 		{
-			$message->to($request->email)->subject('Activate account');
-    });
-		
+      Mail::raw("Hi! Click here to activate your account:\n\n{$url}", function ($message) use ($request)
+      {
+        $message->to($request->email)->subject('Activate account');
+      });
+    }
+		catch (Throwable $e)
+		{
+      session()->forget('registration');
+
+      return redirect()->back()->withInput()->withErrors(['mail' => 'The activation email could not be sent. Please try again later.']);
+    }
+
 		return view('pages.auth.verify');
 	}
 	

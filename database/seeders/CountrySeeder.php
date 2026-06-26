@@ -10,6 +10,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CountrySeeder extends Seeder
 {
+  // Schleift über sämtliche Länder rüber und speichert sie in der Datenbank
   public function run(): void
   { 
     try
@@ -25,7 +26,8 @@ class CountrySeeder extends Seeder
           'limit'  => 100,
           'offset' => $i,
           'response_fields' => 'names.common,codes.alpha_3'
-        ]);
+        ])
+        ->throw();
         
         if ($response->successful())
         {
@@ -67,7 +69,7 @@ class CountrySeeder extends Seeder
     }
     catch (\Exception $e)
     {
-      Log::error("RestCountries API Fehler: " . $e->getMessage());
+      Log::error("RestCountries API Fehler: {$e->getMessage()}");
     }
   }
 }

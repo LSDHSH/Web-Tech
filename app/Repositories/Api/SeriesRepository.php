@@ -25,6 +25,9 @@ class SeriesRepository implements ApiRepositoryInterface
     ->inRandomOrder()
     ->get('external_id')
     ->first();
+
+    if (!$random)
+      return [];
     
     return $this->get($random->external_id);
   }
@@ -80,6 +83,7 @@ class SeriesRepository implements ApiRepositoryInterface
         'video'               => $video,  
       ];
     }
+    return [];
   }
   
   private function formatLogos(?array $items, string $keyName, string $size = 'w300'): array
@@ -114,6 +118,7 @@ class SeriesRepository implements ApiRepositoryInterface
     if (!$result)
       return null;
     
-    return $this->get($result->external_id);
+    $series = $this->get($result->external_id);
+    return empty($series) ? null : $series;
   }
 }
